@@ -1,27 +1,27 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include <sys/ipc.h>
-#include <sys/shm.h>
-#include<string.h>
-#include<errno.h>
+#includestdio.h
+#includestdlib.h
+#include sysipc.h
+#include sysshm.h
+#includestring.h
+#includeerrno.h
 
 #define N 50
-char* strcpy(char*dst, const char *src)
+char strcpy(chardst, const char src)
 {
-	if ((dst == NULL) || (src == NULL))
+	if ((dst == NULL)  (src == NULL))
 		return NULL;
-	char *ret = dst;   //[1]
-	while ((*dst ++= *src++) != '\0');  //[2]
-		return ret;    //[1]
+	char ret = dst;   [1]
+	while ((dst ++= src++) != '0');  [2]
+		return ret;    [1]
 }
 
 int main( )
 {
     char str1[N];
-	char *str2 = "hello world  ......  ...... ";
-	printf("%s\n", strcpy(str1, str2));
-	printf("%s\n", str1);
-	printf("%s\n", str2);
+	char str2 = hello world  ......  ...... ;
+	printf(%sn, strcpy(str1, str2));
+	printf(%sn, str1);
+	printf(%sn, str2);
 
     return 0;
 }
@@ -35,24 +35,24 @@ makefile文件
 #20181220 
 CC = gcc  #编译器的型号
 RM      = rm -rf #删除命令
-TARGET     := strcpy #目标文件
-SRC_PATH   := .
-SRCS         = $(wildcard $(SRC_PATH)/*.c  ) #它的功能是找到目标文件下的.c文件并将它们全都赋给SRCS。
-OBJS        := $(SRCS:.c=.o) #它的功能是把后缀中的.c 文件替换为 .o文件并赋给OBJS。
+TARGET     = strcpy #目标文件
+SRC_PATH   = .
+SRCS         = $(wildcard $(SRC_PATH).c  ) #它的功能是找到目标文件下的.c文件并将它们全都赋给SRCS。
+OBJS        = $(SRCS.c=.o) #它的功能是把后缀中的.c 文件替换为 .o文件并赋给OBJS。
 #OBJS=$(patsubst %.c , %.o , $(SRCS)) #函数它的功能是把后缀中的.c 文件替换为 .o文件并赋给OBJS。
 ## used headers  file path
-INCLUDE_PATH := .
+INCLUDE_PATH = .
 #3）三个变量
 #1）$@：代表目标文件。
 #2）$^：代表所有的依赖文件。
-#3）$<：代表第一个依赖文件。
+#3）$：代表第一个依赖文件。
 ## get all include path 
 CFLAGS  += $(foreach dir, $(INCLUDE_PATH), -I$(dir))
-.PHONY: all #伪所址 不管有没有all  都会执行
-$(TARGET): 
+.PHONY all #伪所址 不管有没有all  都会执行
+$(TARGET) 
 	@echo $(SRCS)
 	$(CC) -c $(CFLAGS) $(SRCS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) # $(LDFLAGS)
 	$(RM) $(OBJS)
-clean:           #清除文件
-	$(RM) *.o $(TARGET)
+clean           #清除文件
+	$(RM) .o $(TARGET)
